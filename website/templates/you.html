@@ -1,0 +1,149 @@
+{% extends "base.html" %} {% block title %}You{% endblock %}
+
+{% block content %}
+<form method="POST">
+    </br>
+    </br>
+
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select
+                class="form-control"
+                id="gender"
+                name="gender"
+        >
+          <option>-</option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+     </div>
+
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input
+                type="number"
+                class="form-control"
+                id="age"
+                name="age"
+                placeholder="Your age"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="height">Height</label>
+        <input
+                type="number"
+                class="form-control"
+                id="height"
+                name="height"
+                placeholder="Your height (cm)"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="weight">Weight</label>
+        <input
+                type="number"
+                class="form-control"
+                id="weight"
+                name="weight"
+                placeholder="Your weight (kg)"
+        />
+    </div>
+
+    <div class="form-group">
+        <label for="silhouette">Silhouette</label>
+        <select
+                class="form-control"
+                id="silhouette"
+                name="silhouette"
+        >
+          <option>-</option>
+          <option>Athletic</option>
+          <option>Slim</option>
+          <option>Skinny</option>
+          <option>Overweight</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hairColour">Hair colour</label>
+    <select
+            class="form-control"
+            id="hairColour"
+            name="hairColour"
+    >
+      <option>-</option>
+      <option>Bald</option>
+      <option>Blonde</option>
+      <option>Black</option>
+      <option>Bronze</option>
+      <option>Ginger</option>
+      <option>Gray</option>
+      <option>White</option>
+      <option>Other</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+        <label for="facialHair">Facial hair</label>
+        <select
+                class="form-control"
+                id="facialHair"
+                name="facialHair"
+        >
+          <option>None</option>
+          <option>Moustache</option>
+          <option>Beard</option>
+          <option>Moustache + Beard</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="glasses">Glasses</label>
+        <select
+                class="form-control"
+                id="glasses"
+                name="glasses"
+        >
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="skinColour">Skin colour</label>
+        <select
+                class="form-control"
+                id="skinColour"
+                name="skinColour"
+        >
+          <option>-</option>
+          <option>White</option>
+          <option>Black</option>
+          <option>Yellow</option>
+          <option>Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="eyeColour">Eye colour</label>
+        <select
+                class="form-control"
+                id="eyeColour"
+                name="eyeColour"
+        >
+          <option>-</option>
+          <option>Brown</option>
+          <option>Blue</option>
+          <option>Green</option>
+          <option>Gray</option>
+          <option>Other</option>
+        </select>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
