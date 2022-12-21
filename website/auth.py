@@ -5,6 +5,8 @@ from . import db
 from flask import jsonify
 from sqlalchemy import select, engine
 
+
+
 auth = Blueprint('auth', __name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
