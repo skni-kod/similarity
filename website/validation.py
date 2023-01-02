@@ -1,3 +1,4 @@
+# contains validation functions
 from flask import flash
 
 def sign_up_valid(email, first_name, password1, password2):

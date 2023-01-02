@@ -1,3 +1,4 @@
+# contains other functions
 from .models import User
 
 def number_of_similars(gender, age, height, weight, skin_colour):
@@ -44,3 +45,17 @@ def print_whole_table():
     users = User.query.all()
     for user in users:
         print(user.id, user.ipaddress, user.date ,user.gender, user.age, user.height, user.weight, user.silhouette, user.hair_colour, user.facial_hair, user.glasses, user.skin_colour, user.eye_colour)
+
+
+def stat(column, argument):
+    users = User.query.all()
+    argument_counter = int(0)
+    other_counter = int(0)
+
+    for user in users:
+        if (column==argument):
+            argument_counter += 1
+        else:
+            other_counter +=1
+
+    return argument_counter / (argument_counter+other_counter)

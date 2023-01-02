@@ -86,3 +86,7 @@ def you():
             return redirect(url_for('views.home'))
 
     return render_template("you.html")
+
+@auth.route('/statistics', methods=['GET', 'POST'])
+def statistics():
+    return render_template("statistics.html", zmienna=2)
