@@ -89,4 +89,7 @@ def you():
 
 @auth.route('/statistics', methods=['GET', 'POST'])
 def statistics():
-    return render_template("statistics.html", zmienna=2)
+    # hair statistics
+    blonde_prc = stat("hair_colour", "Bronze")
+    print(blonde_prc)
+    return render_template("statistics.html", zmienna=blonde_prc)

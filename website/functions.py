@@ -51,11 +51,17 @@ def stat(column, argument):
     users = User.query.all()
     argument_counter = int(0)
     other_counter = int(0)
+    column = 'user.'+column
 
     for user in users:
-        if (column==argument):
+        if (eval(column)==argument):
             argument_counter += 1
         else:
             other_counter +=1
 
+    if argument_counter+other_counter==0:
+        return "Pusta baza danych"
+
+    statistic = argument_counter / (argument_counter + other_counter)
+    print(statistic)
     return argument_counter / (argument_counter+other_counter)
