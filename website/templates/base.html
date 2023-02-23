@@ -15,6 +15,13 @@
           crossorigin="anonymous"
         />
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"
+        integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- tutaj zmiana koloru tła i czcionki na ciemny -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
         <title>{% block title %}Home{% endblock %}</title>
     </head>
     <body>
@@ -29,9 +36,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbar">
                 <div class="navbar-nav">
+<<<<<<< Updated upstream
                     <a class="nav-item nav-link" id="login" href="/login">Login</a>
                     <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign up</a>
+=======
+>>>>>>> Stashed changes
                     <a class="nav-item nav-link" id="home" href="/home">Home</a>
+                    <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign up</a>
+                    <a class="nav-item nav-link" id="login" href="/login">Login</a>
                     <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
                     <a class="nav-item nav-link" id="you" href="/you">You</a>
                 </div>
