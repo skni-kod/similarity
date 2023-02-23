@@ -64,4 +64,4 @@ def stat(column, argument):
 
     statistic = argument_counter / (argument_counter + other_counter)
     print(statistic)
-    return argument_counter / (argument_counter+other_counter)
+    return argument_counter / (argument_counter + other_counter)

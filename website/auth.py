@@ -4,8 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask import jsonify
 from sqlalchemy import select, engine
-from .validation import *
-from .functions import *
 
 auth = Blueprint('auth', __name__)
 
@@ -28,11 +26,6 @@ def home():
     return render_template("home.html")
 
 
-@auth.route('/test')
-def test():
-    return render_template("test.html")
-
-
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
@@ -41,14 +34,14 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if sign_up_valid(email, first_name, password1, password2):
+        if sign_up_validation(email, first_name, password1, password2):
             pass
     return render_template("sign_up.html")
 
 
 @auth.route('/you', methods=['GET', 'POST'])
 def you():
-    #print_whole_table()
+    print_whole_table()
     if request.method == 'POST':
         ip = jsonify({'ip': request.remote_addr}), 200
         gender       = request.form.get('gender')
@@ -63,7 +56,7 @@ def you():
         eye_colour   = request.form.get('eye_colour')
         date         = request.form.get('date')
 
-        if you_valid(gender, age, height, weight, silhouette, hair_colour, skin_colour, eye_colour):
+        if you_data_validation(gender, age, height, weight, silhouette, hair_colour, skin_colour, eye_colour):
 
             number_of_smlrs = number_of_similars(gender, age, height, weight, skin_colour)
             number_of_idntcl = number_of_identical(gender, age, height, weight, silhouette, hair_colour, facial_hair, glasses, skin_colour, eye_colour)
@@ -92,9 +85,193 @@ def you():
 
     return render_template("you.html")
 
+<<<<<<< Updated upstream
+
+def sign_up_validation(email, first_name, password1, password2):
+
+    if len(email) < 4:
+        flash('Email must be longer than 3 characters', category='error')
+        return False
+    elif len(first_name) < 2:
+        flash('Name must be longer than 1 character', category='error')
+        return False
+    elif password1 != password2:
+        flash('Passwords doesn\'t match!', category='error')
+        return False
+    elif len(password1) < 7:
+        flash('Password must be at least 7 characters', category='error')
+        return False
+    else:
+        flash('Account created!', category='success')
+        return True
+
+
+def you_data_validation(gender, age, height, weight, silhouette, hair_colour, skin_colour, eye_colour):
+    result = True
+    #niepoprawnie sprawdza warunki. dla sylwetki sprawdza poprawnie, dla hair_colour, skin_colour... jakby ignorował, do naprawienia
+    print(gender, age, height, weight, silhouette, hair_colour, skin_colour, eye_colour)
+    if gender == '-':
+        flash('You forgot to choose gender!', category='error')
+        result = False
+
+    if age == '':
+        flash('You forgot to bring your age!', category='error')
+        result = False
+
+    elif int(age) < 0 or int(age) > 120:
+        flash('Are you sure you\'re that old?', category='error')
+        result = False
+
+    if height == '':
+        flash('You forgot to bring your height!', category='error')
+        result = False
+
+    elif int(height) < 50 or int(height) > 273:
+        flash('Height is invalid!', category='error')
+        result = False
+
+    if weight == '':
+        flash('You forgot to bring your weight!', category='error')
+        result = False
+
+    elif int(weight) < 10 or int(weight) > 610:
+        flash('Weight is invalid!', category='error')
+        result = False
+
+    if hair_colour == '-':
+        flash('You forgot to bring hair colour!', category='error')
+        result = False
+
+    if skin_colour == '-':
+        flash('You forgot to bring skin colour!', category='error')
+        result = False
+
+    if eye_colour == '-':
+        flash('You forgot to bring eye colour!', category='error')
+        result = False
+
+    if silhouette == '-':
+        flash('You forgot to bring the silhouette!', category='error')
+        result = False
+
+    return result
+
+
+def number_of_similars(gender, age, height, weight, skin_colour):
+    age = int(age)
+    height = int(height)
+    weight = int(weight)
+
+    users = User.query.all()
+    counter = int(0)
+    for user in users:
+        if (gender == gender and difference(age, user.age, 2) and difference(height, user.height, 3) and
+                difference(weight, user.weight, 2) and skin_colour == user.skin_colour):
+            counter += 1
+
+    return counter
+
+
+def number_of_identical(gender, age, height, weight, silhouette, hair_colour, facial_hair, glasses, skin_colour, eye_colour):
+
+    age = int(age)
+    height = int(height)
+    weight = int(weight)
+
+    number_of_identic = User.query.filter_by(
+                                gender=gender, age=age, height=height, weight=weight, silhouette=silhouette,
+                                hair_colour=hair_colour, facial_hair=facial_hair, glasses=glasses,
+                                skin_colour=skin_colour, eye_colour=eye_colour
+                                ).count()
+
+    return number_of_identic
+
+
+def difference(a, b, max_difference):
+    a = int(a)
+    max_difference = int(max_difference)
+
+    if abs(a-b) <= max_difference:
+        return True
+
+    return False
+
+
+def print_whole_table():
+    users = User.query.all()
+    for user in users:
+        print(user.id, user.ipaddress, user.date ,user.gender, user.age, user.height, user.weight, user.silhouette, user.hair_colour, user.facial_hair, user.glasses, user.skin_colour, user.eye_colour)
+=======
 @auth.route('/statistics', methods=['GET', 'POST'])
 def statistics():
     # hair statistics
-    blonde_prc = stat("hair_colour", "Bronze")
-    print(blonde_prc)
-    return render_template("statistics.html", zmienna=blonde_prc)
+    blonde_prc = stat("hair_colour", "Blonde")
+    black_prc = stat("hair_colour", "Black")
+    bronze_prc = stat("hair_colour", "Bronze")
+    ginger_prc = stat("hair_colour", "Ginger")
+    gray_prc = stat("hair_colour", "Gray")
+    white_prc = stat("hair_colour", "White")
+    hair_other_prc = stat("hair_colour", "Other")
+
+    # silhouette statistics
+    slim_prc = stat("silhouette", "Slim")
+    skinny_prc = stat("silhouette", "Skinny")
+    overweight_prc = stat("silhouette", "Overweight")
+    athletic_prc = stat("silhouette", "Athletic")
+
+    # facial hair statistics
+    none_prc = stat("facial_hair", "None")
+    moustache_prc = stat("facial_hair", "Moustache")
+    beard_prc = stat("facial_hair", "Beard")
+    moustache_beard_prc = stat("facial_hair", "Moustache + Beard")
+
+    # glasses statistics
+    glasses_yes_prc = stat("glasses", "Yes")
+    glasses_no_prc = stat("glasses", "No")
+
+    # gender statistics
+    male_prc = stat("gender", "Male")
+    female_prc = stat("gender", "Female")
+
+    # skin colour statistics tion>White</option>
+    skin_white_prc = stat("skin_colour", "White")
+    skin_black_prc = stat("skin_colour", "Black")
+    skin_yellow_prc = stat("skin_colour", "Yellow")
+    skin_other_prc = stat("skin_colour", "Other")
+
+    # eye colour statistics
+    eye_brown_prc = stat("eye_colour", "Brown")
+    eye_blue_prc = stat("eye_colour", "Blue")
+    eye_green_prc = stat("eye_colour", "Green")
+    eye_gray_prc = stat("eye_colour", "Gray")
+    eye_other_prc = stat("eye_colour", "Other")
+
+    return render_template("statistics.html",
+                            #hair_variables
+                            blonde=blonde_prc, black=black_prc,
+                            bronze=bronze_prc, ginger=ginger_prc, gray=gray_prc,
+                            white=white_prc, hair_other=hair_other_prc,
+
+                            #silhouette_variables
+                            slim=slim_prc, skinny=skinny_prc,
+                            overweight=overweight_prc, athletic=athletic_prc,
+
+                            #facial_hair_variables
+                            _none=none_prc, moustache=moustache_prc,
+                            beard=beard_prc, moustache_beard=moustache_beard_prc,
+
+                            #gender_variables
+                            male = male_prc, female = female_prc,
+
+                            #glasses_variables
+                            glasses_yes = glasses_yes_prc, glasses_no = glasses_no_prc,
+
+                            # skin_colour_variables
+                            skin_white = skin_white_prc, skin_black = skin_black_prc,
+                            skin_yellow = skin_yellow_prc, skin_other = skin_other_prc,
+
+                            # eye_colour_variables
+                            eye_brown = eye_brown_prc, eye_blue = eye_blue_prc,
+                            eye_green = eye_green_prc, eye_gray = eye_gray_prc,
+                            eye_other = eye_other_prc)
+>>>>>>> Stashed changes

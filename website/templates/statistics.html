@@ -1,8 +1,328 @@
-{% extends "base.html" %} {% block title %}Logout{% endblock %}
-
+{% extends "base.html" %} {% block title %}Statistics{% endblock %}
 {% block content %}
-<h1>Tutaj kiedyś zobaczysz statystyki</h1>
-<h1>Hair Colour Stat:</h1>
-<h1>Blonde: </h1>
+    <style>
+        .chartContainer {
+            display: flex; {# to powoduje, ze wykresy sa obok siebie na zasadzie lewo-prawo #}
+            justify-content: center;
+            margin-bottom: 24px;
+            margin-top: 24px;
+        }
+        .chartCard {
+            border: solid 3px #444444;
+            justify-content: center; {# wysrodkowywanie #}
+            align-items: center; {# wysrodkowywanie #}
+            margin-bottom: 24px; {# marginesy po to zeby wykresy sie nie dotykały #}
+            margin-top: 55px;
+            margin-left: 40px;
+            margin-right: 40px;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+
+    {% block javascript %}
+    {# uzycie div'óv w celu rozmieszczenia wykresow #}
+        <div class =chartContainer>
+            <div class="chartCard">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <div class="chartCard">
+                <canvas id="myChart2"></canvas>
+            </div>
+
+            <div class="chartCard">
+                <canvas id="myChart3"></canvas>
+            </div>
+
+            <div class="chartCard">
+                <canvas id="myChart7"></canvas>
+            </div>
+        </div>
+
+        <div class =chartContainer>
+            <div class="chartCard">
+                <canvas id="myChart4"></canvas>
+            </div>
+
+            <div class="chartCard">
+                <canvas id="myChart5"></canvas>
+            </div>
+
+            <div class="chartCard">
+                <canvas id="myChart6"></canvas>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+
+            // probowalem skrocic ten kod pomiedzy <script'ami>, nieuzywając ciagle tego samego szablonu do kazdego wykresu, ale sie wysypywalo
+            // dobrze by bylo to jakos zomptymalizowac jezeli sie da
+            // wykresy typu 'doughnut' nie powinny w tle generowac jakiejs siatki. Nwm dlaczego, ale przy wykresie 'Facial hair' jej nie ma :v. Do naprawy.
+            // nalezy jeszcze zrobic statystki do: age, height, weight.
+                // bo to staty "nie-do-wyborowu". Trzeba jakąś funkcję co zlicza wszystkie podane wartosci i wyraza w procentach tylko te podane LUB inaczej.
+            const data1 = {
+                labels: ['Blonde', 'Black', 'Bronze', 'Ginger', 'Gray', 'White', 'Other'],
+                  datasets: [{
+                    label: '',
+                    data: [{{ blonde }}, {{ black }}, {{ bronze }}, {{ ginger }}, {{ gray }}, {{ white }}, {{ hair_other }}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#e7c75d', '#202020',
+                        '#654321', '#b06500',
+                        '#808080', '#d3d3d3',
+                        '#00ff00']
+                  }]
+            };
+            const data2 = {
+                labels: ['Slim', 'Skinny', 'Athletic', 'Overweight'],
+                  datasets:[{
+                    label : '',
+                    data: [{{ slim }}, {{ skinny }}, {{ athletic }}, {{ overweight }}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#fff500', '#59981d',
+                        '#ab1900', '#ff0000']
+                  }]
+            };
+
+            const data3 = {
+                 labels: ['None', 'Moustache', 'Beard', 'Moustache + beard'],
+                  datasets:[{
+                    label : '',
+                    data: [{{ _none }}, {{ moustache }}, {{ beard }}, {{ moustache_beard }}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#9d1621', '#5d3f1a',
+                        '#442300', '#deba00']
+                  }]
+            };
+
+            const data4 = {
+                labels: ['Yes', 'No'],
+                  datasets:[{
+                    label : '',
+                    data: [{{ glasses_yes }}, {{ glasses_no }}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#6397f6', '#44962b',]
+                  }]
+            };
+
+            const data5 = {
+                labels: ['white', 'black', 'yellow', 'other'],
+                  datasets:[{
+                    label : '',
+                    data: [{{ skin_white }}, {{ skin_black }}, {{ skin_yellow }}, {{ skin_other }}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#c25b5b', '#4f1c00',
+                        '#eeae35', '#1e6200']
+                  }]
+            };
+
+            const data6 = {
+                labels: ['Male', 'Female'],
+                  datasets:[{
+                    label : '',
+                    data: [{{ male }}, {{ female }}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#001ea9', '#9208a9',]
+                  }]
+            };
+
+            const data7 = {
+                labels: ['brown', 'blue', 'green', 'gray', 'other'],
+                  datasets:[{
+                    label : '',
+                    data: [{{ eye_brown }}, {{ eye_blue }}, {{ eye_green }}, {{ eye_gray }}, {{ eye_other }}],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        '#411701', '#00287e',
+                        '#195e00', '#4b4b4b', '#670d77']
+                  }]
+            };
+
+            const config1 = {
+                data: data1,
+                type: 'doughnut',
+                options: {
+                    layout: {
+                        padding: {bottom: 20}
+                        },
+                    plugins: {
+                        tooltip: { displayColors: false},
+                        title: {
+                            display: true,
+                            text: 'Hair colour',
+                            color: '#ffffff',
+                            font: {size: 16, style: 'italic'}
+                }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            const config2 = {
+                data: data2,
+                type: 'doughnut',
+                options: {
+                    layout: {
+                        padding: {bottom: 20}
+                        },
+                    plugins: {
+                        tooltip: { displayColors: false},
+                        title: {
+                          display: true,
+                          text: 'Silhouette',
+                          color: '#ffffff',
+                          font: {size: 16, style: 'italic'}
+                      }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            const config3 = {
+                data: data3,
+                type: 'doughnut',
+                options: {
+                    layout: {
+                        padding: {bottom: 20}
+                        },
+                    plugins: {
+                        tooltip: { displayColors: false},
+                        title: {
+                            display: true,
+                            text: 'Facial hair',
+                            color: '#ffffff',
+                            font: {size: 16, style: 'italic'}
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                }
+            };
+
+            const config4 = {
+                data: data4,
+                type: 'doughnut',
+                options: {
+                    layout: {
+                        padding: {bottom: 20}
+                        },
+                    plugins: {
+                        tooltip: { displayColors: false},
+                        title: {
+                            display: true,
+                            text: 'Glasses',
+                            color: '#ffffff',
+                            font: {size: 16, style: 'italic'}
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            const config5 = {
+                data: data5,
+                type: 'doughnut',
+                options: {
+                    layout: {
+                        padding: {bottom: 20}
+                        },
+                    plugins: {
+                        tooltip: { displayColors: false},
+                        title: {
+                            display: true,
+                            text: 'Skin colour',
+                            color: '#ffffff',
+                            font: {size: 16, style: 'italic'}
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            const config6 = {
+                data: data6,
+                type: 'doughnut',
+                options: {
+                    layout: {
+                        padding: {bottom: 20}
+                        },
+                    plugins: {
+                        tooltip: { displayColors: false},
+                        title: {
+                            display: true,
+                            text: 'Gender',
+                            color: '#ffffff',
+                            font: {size: 16, style: 'italic'}
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            const config7 = {
+                data: data7,
+                type: 'doughnut',
+                options: {
+                    layout: {
+                        padding: {bottom: 20}
+                        },
+                    plugins: {
+                        tooltip: { displayColors: false},
+                        title: {
+                            display: true,
+                            text: 'Eye colour',
+                            color: '#ffffff',
+                            font: {size: 16, style: 'italic'}
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            // eleganckie uwienczenie wszystkich configów i date'ow na górze:
+            new Chart(document.getElementById('myChart'), config1);
+            new Chart(document.getElementById('myChart2'), config2);
+            new Chart(document.getElementById('myChart3'), config3);
+            new Chart(document.getElementById('myChart4'), config4);
+            new Chart(document.getElementById('myChart5'), config5);
+            new Chart(document.getElementById('myChart6'), config6);
+            new Chart(document.getElementById('myChart7'), config7);
+
+        </script>
+    {% endblock %}
 {% endblock %}
-</html>
