@@ -5,13 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7601e0f3-c69c-4f78-852d-609bb4d4e052" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/website/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/auth.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/SIMILARITY.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SIMILARITY.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/instance/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/statistics.html" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+>>>>>>> Stashed changes
   <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
     <envs>
       <env key="FLASK_APP" value="app" />
@@ -34,6 +57,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -47,6 +71,29 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\repo\similarity\website\static" />
+      <recent name="C:\Users\zajac\PycharmProjects\similarity\website" />
+    </key>
+  </component>
+>>>>>>> Stashed changes
   <component name="RunManager" selected="Flask server.Flask (main.py)">
     <configuration name="SIMILARITY" type="PythonConfigurationType" factoryName="Python">
       <module name="SIMILARITY" />
@@ -99,7 +146,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671654401991</updated>
+<<<<<<< Updated upstream
       <workItem from="1671654403980" duration="800000" />
+=======
+      <workItem from="1671654403980" duration="1488000" />
+      <workItem from="1672659882390" duration="5970000" />
+      <workItem from="1676560020487" duration="757000" />
+      <workItem from="1676565051626" duration="3250000" />
+      <workItem from="1676647646172" duration="9713000" />
+      <workItem from="1676674153112" duration="571000" />
+      <workItem from="1676729681326" duration="5221000" />
+      <workItem from="1676914339683" duration="5741000" />
+      <workItem from="1676920415430" duration="171000" />
+      <workItem from="1676981928321" duration="7472000" />
+      <workItem from="1677086715070" duration="9132000" />
+      <workItem from="1677151977335" duration="15699000" />
+      <workItem from="1677179191285" duration="14162000" />
+      <workItem from="1677193547020" duration="1886000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -107,7 +171,12 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+<<<<<<< Updated upstream
     <SUITE FILE_PATH="coverage/SIMILARITY$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1671654905940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+=======
+    <SUITE FILE_PATH="coverage/main_py$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1677195375292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SIMILARITY$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1672666223363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> Stashed changes
     <SUITE FILE_PATH="coverage/SIMILARITY$SIMILARITY.coverage" NAME="SIMILARITY Coverage Results" MODIFIED="1671654856841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
