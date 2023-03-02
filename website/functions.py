@@ -1,4 +1,7 @@
 # contains other functions
+import sqlalchemy
+import random
+
 from .models import User
 
 def number_of_similars(gender, age, height, weight, skin_colour):
@@ -46,6 +49,74 @@ def print_whole_table():
     for user in users:
         print(user.id, user.ipaddress, user.date ,user.gender, user.age, user.height, user.weight, user.silhouette, user.hair_colour, user.facial_hair, user.glasses, user.skin_colour, user.eye_colour)
 
+def sign_up_validation(email, first_name, password1, password2):
+
+    if len(email) < 4:
+        flash('Email must be longer than 3 characters', category='error')
+        return False
+    elif len(first_name) < 2:
+        flash('Name must be longer than 1 character', category='error')
+        return False
+    elif password1 != password2:
+        flash('Passwords doesn\'t match!', category='error')
+        return False
+    elif len(password1) < 7:
+        flash('Password must be at least 7 characters', category='error')
+        return False
+    else:
+        flash('Account created!', category='success')
+        return True
+
+
+def you_data_validation(gender, age, height, weight, silhouette, hair_colour, skin_colour, eye_colour):
+    result = True
+    #niepoprawnie sprawdza warunki. dla sylwetki sprawdza poprawnie, dla hair_colour, skin_colour... jakby ignorował, do naprawienia
+    print(gender, age, height, weight, silhouette, hair_colour, skin_colour, eye_colour)
+    if gender == '-':
+        flash('You forgot to choose gender!', category='error')
+        result = False
+
+    if age == '':
+        flash('You forgot to bring your age!', category='error')
+        result = False
+
+    elif int(age) < 0 or int(age) > 120:
+        flash('Are you sure you\'re that old?', category='error')
+        result = False
+
+    if height == '':
+        flash('You forgot to bring your height!', category='error')
+        result = False
+
+    elif int(height) < 50 or int(height) > 273:
+        flash('Height is invalid!', category='error')
+        result = False
+
+    if weight == '':
+        flash('You forgot to bring your weight!', category='error')
+        result = False
+
+    elif int(weight) < 10 or int(weight) > 610:
+        flash('Weight is invalid!', category='error')
+        result = False
+
+    if hair_colour == '-':
+        flash('You forgot to bring hair colour!', category='error')
+        result = False
+
+    if skin_colour == '-':
+        flash('You forgot to bring skin colour!', category='error')
+        result = False
+
+    if eye_colour == '-':
+        flash('You forgot to bring eye colour!', category='error')
+        result = False
+
+    if silhouette == '-':
+        flash('You forgot to bring the silhouette!', category='error')
+        result = False
+
+    return result
 
 def stat(column, argument):
     users = User.query.all()
@@ -64,4 +135,20 @@ def stat(column, argument):
 
     statistic = argument_counter / (argument_counter + other_counter)
     print(statistic)
-    return argument_counter / (argument_counter + other_counter)
+    return round(argument_counter / (argument_counter + other_counter),2)
+
+
+def random_stat():
+    #Function gives random statistic
+    users = User.query.all()
+    arguments = ["gender", "silhouette", "hair_colour", "facial_hair", "glasses", "skin_colour", "eye_colour"]
+    for i in range(20):
+        argument1 = random.choice(arguments)
+        argument2 = random.choice(arguments)
+        while argument1 == argument2:
+            argument1 = random.choice(arguments)
+            argument2 = random.choice(arguments)
+        #To this moment, program only have choosen two features to look for (they are always different)
+        print(argument1, argument2)
+        print("======")
+
