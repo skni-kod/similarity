@@ -16,6 +16,9 @@ def login():
 
     return render_template("login.html", zmienna=2)
 
+@auth.route('/chat', methods=['GET', 'POST'])
+def chat():
+    return render_template("chat.html")
 
 @auth.route('/logout')
 def logout():
