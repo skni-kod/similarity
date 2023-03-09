@@ -3,3 +3,6 @@ body {
     background: #232323;
     color: lightgrey;
 }
+.bold-text {
+    font-weight: bold;
+}

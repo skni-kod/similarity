@@ -1,6 +1,7 @@
 # contains other functions
 import sqlalchemy
 import random
+from flask import flash
 
 from .models import User
 
