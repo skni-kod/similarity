@@ -3,3 +3,22 @@ body {
     background: #232323;
     color: lightgrey;
 }
+#lewa {
+    float: left;
+    height: 80%;
+    width: 40%;
+}
+#prawa {
+    text-align: center;
+    padding: 100px;
+    padding-left: 200px;
+    float: left;
+    height: 80%;
+    width: 60%;
+}
+#stopka{
+    clear: both;
+    text-align: center;
+    height: 20%;
+}
+

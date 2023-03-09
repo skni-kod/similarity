@@ -1,13 +1,26 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %}
-
-<h1>dfshdfbsd</h1>
+<head>
+    <meta charset="utf-8">
+    <title>Strona główna</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css"
+</head>
+<body>
 {% block content %}
 
-    <marquee>ale faza</marquee>
-<img src="website/static/minion.jpg" alt="Jezyk">
-<style>
-body {
-  background-image: url('../static/minion.jpg');
-}
-</style>
+    <a href="/statistics"> <img src="../static/image1.jpg" alt="" style="float: left; margin-right: 10px; margin-top: 150px; width: 30%; height: 30%; border-radius: 50%;"></a>
+
+    <div id="prawa">
+        <h1>Find your similiar mate</h1>
+        <p> "Similarity" is a website that allows you to compare the appearances of different people. </p>
+        <p>Users can upload their appearance data and chat with other similiar people</p>
+        <a href="/statistics"><input type="button" value="Statistics" ></a>
+        <a href="/you"> <input type="button" value="Your look"></a>
+    </div>
+
+
+    <div id="stopka">
+        <hr>
+--- Website under construction ---
+    </div>
 {% endblock %}
+</body>
