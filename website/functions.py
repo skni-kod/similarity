@@ -1,8 +1,8 @@
-# contains other functions
 import sqlalchemy
 import random
-
 from .models import User
+
+
 
 def number_of_similars(gender, age, height, weight, skin_colour):
     age = int(age)
@@ -48,6 +48,7 @@ def print_whole_table():
     users = User.query.all()
     for user in users:
         print(user.id, user.ipaddress, user.date ,user.gender, user.age, user.height, user.weight, user.silhouette, user.hair_colour, user.facial_hair, user.glasses, user.skin_colour, user.eye_colour)
+
 
 def sign_up_validation(email, first_name, password1, password2):
 
@@ -117,6 +118,7 @@ def you_data_validation(gender, age, height, weight, silhouette, hair_colour, sk
         result = False
 
     return result
+
 
 def stat(column, argument):
     users = User.query.all()
