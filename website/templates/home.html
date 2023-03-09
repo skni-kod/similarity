@@ -3,11 +3,21 @@
 <h1>dfshdfbsd</h1>
 {% block content %}
 
-    <marquee>ale faza</marquee>
-<img src="website/static/minion.jpg" alt="Jezyk">
+
+    <div style="display:flex;">
+        <a href="statistics"><img src="../static/tile_statistics.png" alt="Statistics" style="width:100%;  float:left;   margin-right:10px;"></a>
+        <a href="chat"      ><img src="../static/tile_chat.png"       alt="Chat"       style="width:100%;  float:right;  margin-left:10px;"  ></a>
+    </div>
+
+     <div style="display:flex;">
+        <a href="you"><img src="../static/tile_profile.png" alt="Profile" style="width:100%;  float:left;   margin-right:10px;"></a>
+    </div>
+
+<img src="../static/witej.png" alt="Jezyk">
 <style>
-body {
-  background-image: url('../static/minion.jpg');
+body
+{
+  background-image: url('../static/background.png');
 }
 </style>
 {% endblock %}
