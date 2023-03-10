@@ -20,16 +20,22 @@ def login():
 def chat():
     return render_template("chat.html")
 
+@auth.route('/about')
+def about():
+    return render_template("about.html")
+
+@auth.route('/contact-us')
+def contactUs():
+    return render_template("contactUs.html")
+
 @auth.route('/logout')
 def logout():
     return render_template("logout.html")
-
 
 @auth.route('/home')
 def home():
     random_stat()
     return render_template("home.html")
-
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
@@ -42,7 +48,6 @@ def sign_up():
         if sign_up_validation(email, first_name, password1, password2):
             pass
     return render_template("sign_up.html")
-
 
 @auth.route('/you', methods=['GET', 'POST'])
 def you():
