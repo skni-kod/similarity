@@ -21,4 +21,6 @@ body {
     text-align: center;
     height: 20%;
 }
-
+.bold-text {
+    font-weight: bold;
+}
