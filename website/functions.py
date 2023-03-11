@@ -1,7 +1,7 @@
 import sqlalchemy
 import random
 from .models import User
-
+from flask import flash
 
 
 def number_of_similars(gender, age, height, weight, skin_colour):
@@ -50,13 +50,10 @@ def print_whole_table():
         print(user.id, user.ipaddress, user.date ,user.gender, user.age, user.height, user.weight, user.silhouette, user.hair_colour, user.facial_hair, user.glasses, user.skin_colour, user.eye_colour)
 
 
-def sign_up_validation(email, first_name, password1, password2):
+def sign_up_validation(email, firstName, password1, password2):
 
     if len(email) < 4:
         flash('Email must be longer than 3 characters', category='error')
-        return False
-    elif len(first_name) < 2:
-        flash('Name must be longer than 1 character', category='error')
         return False
     elif password1 != password2:
         flash('Passwords doesn\'t match!', category='error')

@@ -35,12 +35,17 @@ def home():
 def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
-        first_name = request.form.get('first_name')
+        first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
         if sign_up_validation(email, first_name, password1, password2):
-            pass
+            new_user = User(email=email, firstName=first_name, password=generate_password_hash(password1, method="sha256"))
+            db.session.add(new_user)
+            db.session.commit()
+            #flash('Account created!', category='success')
+            return redirect(url_for('views.home'))
+
     return render_template("sign_up.html")
 
 
