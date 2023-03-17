@@ -5,6 +5,7 @@ from . import db
 from flask import jsonify
 from sqlalchemy import select, engine
 from .functions import *
+from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
@@ -14,9 +15,21 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
 
-    return render_template("login.html", zmienna=2)
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash("Logged in successfully!", category="success")
+                login_user(user, remember=True)
+                return redirect(url_for('views.home'))
+            else:
+                flash("Incorrect password, try again", category="error")
+        else:
+            flash("Email does not exist", category="error")
+
+    return render_template("login.html", user=current_user)
 
 @auth.route('/chat', methods=['GET', 'POST'])
+@login_required
 def chat():
     return render_template("chat.html")
 
@@ -29,27 +42,39 @@ def contactUs():
     return render_template("contactUs.html")
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return render_template("logout.html")
+    logout_user()
+    return redirect(url_for('auth.login'))
 
 @auth.route('/home')
+@login_required
 def home():
-    random_stat()
+    #random_stat()
     return render_template("home.html")
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
-        first_name = request.form.get('first_name')
+        first_name = request.form.get('firstName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if sign_up_validation(email, first_name, password1, password2):
-            pass
-    return render_template("sign_up.html")
+        user = User.query.filter_by(email=email).first()
+        if user:
+            flash("Email already exists", category="error")
+        elif sign_up_validation(email, first_name, password1, password2):
+            new_user = User(email=email, firstName=first_name, password=generate_password_hash(password1, method="sha256"))
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(user, remember=True)
+            return redirect(url_for('views.home'))
+
+    return render_template("sign_up.html", user=current_user)
 
 @auth.route('/you', methods=['GET', 'POST'])
+@login_required
 def you():
     print_whole_table()
     if request.method == 'POST':
@@ -96,6 +121,7 @@ def you():
     return render_template("you.html")
 
 @auth.route('/statistics', methods=['GET', 'POST'])
+@login_required
 def statistics():
     # hair statistics
     blonde_prc = stat("hair_colour", "Blonde")
