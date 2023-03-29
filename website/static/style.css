@@ -1,8 +1,4 @@
-
-body {
-    background-image: url("../static/background.png");
-    color: #c0c0c0;
-}
+@import "bootstrap.min.css";
 #lewa {
     float: left;
     height: 80%;
