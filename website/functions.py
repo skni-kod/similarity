@@ -115,7 +115,7 @@ def you_data_validation(gender, age, height, weight, silhouette, hair_colour, sk
         result = False
 
     return result
-
+#test
 
 def stat(column, argument):
     users = User.query.all()
