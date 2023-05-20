@@ -104,11 +104,11 @@ def you():
             number_of_smlrs = number_of_similars(gender, age, height, weight, skin_colour)
             number_of_idntcl = number_of_identical(gender, age, height, weight, silhouette, hair_colour, facial_hair, glasses, skin_colour, eye_colour)
 
-            if number_of_idntcl > 0:
+            if number_of_idntcl > 1:
                 message = 'Found ' + str(number_of_idntcl) + ' identical person!'
                 flash(message, category='success')
 
-            elif number_of_smlrs > 0:
+            elif number_of_smlrs > 1:
                 message = 'Found ' + str(number_of_smlrs) + ' similar person!'
                 flash(message, category='success')
 
