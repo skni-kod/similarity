@@ -1,4 +1,13 @@
 @import "bootstrap.min.css";
+#glowy{
+    float: left;
+    margin-right: 10px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+}
 #lewa {
     float: left;
     height: 80%;
@@ -21,3 +30,48 @@
 .bold-text {
     font-weight: bold;
 }
+
+#obraz1 {
+    width:90%;
+    float:left;
+    margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+     border-radius: 20px 10px;
+}
+
+#obraz2{
+    width:90%;
+    float:left;
+    margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+     border-radius: 20px 10px;
+}
+
+#obraz3{
+    width:90%;
+    float:left;
+    margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+    border-radius: 20px 10px;
+}
+
+#obraz4{
+    width:90%;
+    float:left;
+    margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+    border-radius: 20px 10px;
+}
+
+
+
+
+
