@@ -37,8 +37,9 @@ def number_of_identical(gender, age, height, weight, silhouette, hair_colour, fa
 def difference(a, b, max_difference):
     a = int(a)
     max_difference = int(max_difference)
-
-    if abs(a-b) <= max_difference:
+    if b is None:
+        return False
+    elif abs(a-b) <= max_difference:
         return True
 
     return False
@@ -115,7 +116,7 @@ def you_data_validation(gender, age, height, weight, silhouette, hair_colour, sk
         result = False
 
     return result
-
+#test
 
 def stat(column, argument):
     users = User.query.all()

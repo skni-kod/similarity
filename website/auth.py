@@ -48,7 +48,7 @@ def logout():
     return redirect(url_for('auth.login'))
 
 @auth.route('/home')
-@login_required
+#@login_required
 def home():
     #random_stat()
     return render_template("home.html")
@@ -68,7 +68,7 @@ def sign_up():
             new_user = User(email=email, firstName=first_name, password=generate_password_hash(password1, method="sha256"))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
             return redirect(url_for('views.home'))
 
     return render_template("sign_up.html", user=current_user)
@@ -92,10 +92,6 @@ def you():
         date         = request.form.get('date')
 
         if you_data_validation(gender, age, height, weight, silhouette, hair_colour, skin_colour, eye_colour):
-
-            number_of_smlrs = number_of_similars(gender, age, height, weight, skin_colour)
-            number_of_idntcl = number_of_identical(gender, age, height, weight, silhouette, hair_colour, facial_hair, glasses, skin_colour, eye_colour)
-
             new_user = User(gender=gender, age=age, height=height, weight=weight, silhouette=silhouette,
                             hair_colour=hair_colour, facial_hair=facial_hair, glasses=glasses,
                             skin_colour=skin_colour, eye_colour=eye_colour, date=date
@@ -105,11 +101,14 @@ def you():
             db.session.commit()
             flash('Added you successfully!', category='success')
 
-            if number_of_idntcl > 0:
+            number_of_smlrs = number_of_similars(gender, age, height, weight, skin_colour)
+            number_of_idntcl = number_of_identical(gender, age, height, weight, silhouette, hair_colour, facial_hair, glasses, skin_colour, eye_colour)
+
+            if number_of_idntcl > 1:
                 message = 'Found ' + str(number_of_idntcl) + ' identical person!'
                 flash(message, category='success')
 
-            elif number_of_smlrs > 0:
+            elif number_of_smlrs > 1:
                 message = 'Found ' + str(number_of_smlrs) + ' similar person!'
                 flash(message, category='success')
 

@@ -31,7 +31,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(int(id))
+        return User.query.get(id) #domyślnie było tutaj "int(id)". Zmienione jest dlatego, ze gdy baza danych jest pusta, to strona nie ruszy.
 
     return app
 
