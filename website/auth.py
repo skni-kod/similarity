@@ -48,7 +48,7 @@ def logout():
     return redirect(url_for('auth.login'))
 
 @auth.route('/home')
-@login_required
+#@login_required
 def home():
     #random_stat()
     return render_template("home.html")

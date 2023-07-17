@@ -7,6 +7,8 @@
     width: 30%;
     height: 30%;
     border-radius: 50%;
+    display: inline-block;
+     box-shadow: 0 40px 80px rgba(255, 244, 233, 0.1);
 }
 #lewa {
     float: left;
@@ -39,6 +41,8 @@
   margin-bottom: 10px;
   margin-left: 10px;
      border-radius: 20px 10px;
+    display: inline-block;
+    box-shadow: 0 40px 80px rgba(255, 244, 233, 0.1);
 }
 
 #obraz2{
@@ -49,6 +53,8 @@
   margin-bottom: 10px;
   margin-left: 10px;
      border-radius: 20px 10px;
+    display: inline-block;
+    box-shadow: 0 40px 80px rgba(255, 244, 233, 0.1);
 }
 
 #obraz3{
@@ -59,6 +65,8 @@
   margin-bottom: 10px;
   margin-left: 10px;
     border-radius: 20px 10px;
+    display: inline-block;
+    box-shadow: 0 40px 80px rgba(255, 244, 233, 0.1);
 }
 
 #obraz4{
@@ -69,6 +77,8 @@
   margin-bottom: 10px;
   margin-left: 10px;
     border-radius: 20px 10px;
+    display: inline-block;
+    box-shadow: 0 40px 80px rgba(255, 244, 233, 0.1);
 }
 
 
